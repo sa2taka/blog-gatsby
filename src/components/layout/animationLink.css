@@ -1,0 +1,20 @@
+.animation-link {
+  position: relative;
+  cursor: pointer;
+}
+
+.animation-link::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  content: '';
+  width: 0;
+  height: 1px;
+  background-color: #009688;
+  transition: 0.3s;
+  transform: translateX(-50%);
+}
+
+.animation-link:hover::after {
+  width: 100%;
+}

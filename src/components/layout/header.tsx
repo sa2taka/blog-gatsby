@@ -1,36 +1,46 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
+import './header.css';
+import { Flex, Spacer } from '@chakra-ui/layout';
+import { DarkThemeSwitch } from './dartThemeSwtich';
 
 type Prop = { siteTitle: string };
 
 export const Header: React.VFC<Prop> = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
+  <Flex as="header" alignItems="center" height="100%" className="blog-header">
+    <Link
+      to="/"
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        color: `white`,
+        textDecoration: `none`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
+      <Flex width="100%">
+        <StaticImage
+          src="../../images/icon.png"
+          alt="sa2takaブログロゴ"
+          height={36}
           style={{
-            color: `white`,
-            textDecoration: `none`,
+            marginLeft: '4%',
+            marginRight: '12px',
+          }}
+          formats={['auto', 'webp', 'avif']}
+        />{' '}
+        <h1
+          className="navbar-blog-title"
+          style={{
+            fontWeight: 600,
           }}
         >
           {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+        </h1>
+      </Flex>
+    </Link>
+    <Spacer />
+    <DarkThemeSwitch />
+  </Flex>
 );
 
 Header.propTypes = {

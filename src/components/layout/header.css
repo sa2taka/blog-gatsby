@@ -1,0 +1,28 @@
+.blog-header {
+  height: 64px;
+  box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%),
+    0 1px 10px 0 rgb(0 0 0 / 12%);
+  padding: 4px 16px;
+}
+
+.chakra-ui-dark .blog-header {
+  background-color: var(--chakra-colors-gray-700);
+}
+
+.chakra-ui-light .blog-header {
+  background-color: #ffffff;
+}
+
+.navbar-blog-title {
+  font-size: 1.2em;
+  width: 200px;
+  margin-top: 6px;
+}
+
+.chakra-ui-dark .navbar-blog-title {
+  color: #efefef;
+}
+
+.chakra-ui-light .navbar-blog-title {
+  color: #202020;
+}
