@@ -1,14 +1,13 @@
 import { Flex } from '@chakra-ui/react';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-import { BlogPostQuery } from '../../generated/graphql';
 
 type Props = {
   category?: string;
   page?: number;
 };
 export const Posts: React.VFC<Props> = ({ category, page }) => {
-  const data = useStaticQuery<BlogPostQuery>(graphql`
+  const data = useStaticQuery<GatsbyTypes.BlogPostQuery>(graphql`
     query BlogPost {
       allContentfulBlogPost(
         skip: 0
@@ -60,7 +59,7 @@ export const Posts: React.VFC<Props> = ({ category, page }) => {
 };
 
 type PostProp = {
-  post: BlogPostQuery['allContentfulBlogPost']['edges'][number]['node'];
+  post: GatsbyTypes.BlogPostQuery['allContentfulBlogPost']['edges'][number]['node'];
 };
 
 const Post: React.VFC<PostProp> = ({ post }) => {
@@ -80,7 +79,7 @@ const Post: React.VFC<PostProp> = ({ post }) => {
       <div>{post.category?.name}</div>
       <div>{post.title}</div>
       <time dateTime={post.createdAt}>
-        {formatDate(new Date(post.createdAt))}
+        {formatDate(new Date(post.createdAt!))}
       </time>
     </Flex>
   );

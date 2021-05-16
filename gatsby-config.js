@@ -41,5 +41,11 @@ module.exports = {
       },
     },
     `@chakra-ui/gatsby-plugin`,
+    {
+      resolve: 'gatsby-plugin-typegen',
+      options: {
+        outputPath: `src/types/gatsby-types.d.ts`,
+      },
+    },
   ],
 };
