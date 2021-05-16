@@ -1,7 +1,9 @@
 import { Flex } from '@chakra-ui/react';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { formatDate } from '../../util/formatTime';
+
+import './index.css';
 
 type Props = {
   category?: string;
@@ -10,7 +12,7 @@ type Props = {
 export const Posts: React.VFC<Props> = ({ category, page }) => {
   const data = useStaticQuery<GatsbyTypes.AllPostsQuery>(graphql`
     query AllPosts {
-      allContentfulBlogPost {
+      allContentfulBlogPost(sort: { fields: createdAt, order: DESC }) {
         edges {
           node {
             id
@@ -61,9 +63,28 @@ type PostProp = {
 const Post: React.VFC<PostProp> = ({ post }) => {
   return (
     <Flex as="li" direction="column">
-      <div>{post.category?.name}</div>
-      <div>{post.title}</div>
-      <time dateTime={post.createdAt}>
+      <Link
+        to={`/category/${post.category!.slug!}`}
+        style={{
+          color: '#ff5722',
+          display: 'inline',
+          marginRight: 'auto',
+        }}
+        className="animation-link"
+      >
+        {post.category?.name}
+      </Link>
+      <Link
+        to={`/post/${post.slug}`}
+        style={{
+          fontSize: '1.2em',
+          marginRight: 'auto',
+        }}
+        className="animation-link"
+      >
+        {post.title}
+      </Link>
+      <time dateTime={post.createdAt} className="date-text">
         {formatDate(new Date(post.createdAt!))}
       </time>
     </Flex>

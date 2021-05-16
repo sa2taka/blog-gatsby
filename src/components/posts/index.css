@@ -1,0 +1,11 @@
+.date-text {
+  font-size: 0.9em;
+}
+
+.chakra-ui-dark .date-text {
+  color: #ccc;
+}
+
+.chakra-ui-light .date-text {
+  color: #222;
+}

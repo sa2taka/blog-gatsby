@@ -10,6 +10,8 @@ import markdownItContainer from 'markdown-it-container';
 
 import prism from './prism';
 
+import 'katex/dist/katex.min.css';
+
 const myHeaderPlugin = (md: MarkdownIt) => {
   md.renderer.rules.heading_open = (...[tokens, idx, options, _, self]) => {
     const tag = tokens[idx].tag;

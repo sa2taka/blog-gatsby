@@ -1,14 +1,10 @@
-.category-name {
-  color: #ff5722;
-}
-
 .post-title-name {
   font-size: 24px;
   font-weight: 700;
 }
 
 .date-text {
-  font-size: 0.85em;
+  font-size: 0.9em;
 }
 
 .chakra-ui-dark .date-text {
@@ -17,4 +13,20 @@
 
 .chakra-ui-light .date-text {
   color: #222;
+}
+
+.post-width {
+  width: 816px !important;
+}
+
+@media (max-width: 1020px) and (min-width: 768px) {
+  .post-width {
+    width: 80% !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .post-width {
+    width: 99% !important;
+  }
 }

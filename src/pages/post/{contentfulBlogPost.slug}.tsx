@@ -23,10 +23,13 @@ const Post: React.VFC<Props> = ({ data }) => {
   return (
     <Layout>
       <Seo title={post.title!} />
-      <Box marginX="auto" marginTop="12px" as="article">
+      <Box marginX="auto" marginTop="12px" as="article" className="post-width">
         <Box marginBottom="2em">
           <Link
             to={`/category/${post.category!.slug!}`}
+            style={{
+              color: '#ff5722',
+            }}
             className="category-name animation-link "
           >
             {post.category?.name}
@@ -47,7 +50,6 @@ const Post: React.VFC<Props> = ({ data }) => {
             </span>
           </Flex>
         </Box>
-        <hr />
         <PostBody markdown={post.body?.body!} />
       </Box>
     </Layout>
