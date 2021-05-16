@@ -14,6 +14,7 @@ import { Theme } from './theme';
 import './layout.css';
 import '../icomoon/style.css';
 import { Footer } from './footer';
+import { Container } from '@chakra-ui/react';
 
 type Prop = { children: React.ReactNode };
 
@@ -32,7 +33,9 @@ export const Layout: React.VFC<Prop> = ({ children }) => {
     <Theme>
       <div className="application">
         <Header siteTitle={data.site?.siteMetadata?.title || ''} />
-        <main className="main">{children}</main>
+        <Container maxWidth="816px">
+          <main className="main">{children}</main>
+        </Container>
         <Footer />
       </div>
     </Theme>

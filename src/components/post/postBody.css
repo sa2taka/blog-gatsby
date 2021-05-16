@@ -102,25 +102,25 @@
 /* header */
 .post-body h2 {
   font-size: 2em;
+  font-weight: 600;
+  margin-top: 64px;
+  margin-bottom: 24px;
+}
+.post-body h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-top: 58px;
+  margin-bottom: 18px;
 }
 .chakra-ui-dark .post-body h2,
 .chakra-ui-dark .post-body h3 {
-  border-bottom: 1px solid #222;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #555;
 }
 
 .chakra-ui-light .post-body h2,
 .chakra-ui-light .post-body h3 {
-  border-bottom: 1px solid #eee;
-}
-
-.post-body h2 {
-  margin-top: 64px;
-  margin-bottom: 24px;
-}
-
-.post-body h3 {
-  margin-top: 58px;
-  margin-bottom: 18px;
+  border-bottom: 1px solid #ccc;
 }
 
 .post-body h4,

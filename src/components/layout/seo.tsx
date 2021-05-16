@@ -81,7 +81,7 @@ export const Seo: React.VFC<Prop> = ({ description, lang, meta, title }) => {
 };
 
 Seo.defaultProps = {
-  lang: `en`,
+  lang: `ja`,
   meta: [],
   description: ``,
 };

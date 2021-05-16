@@ -9,10 +9,7 @@ export const Footer: React.VFC = () => {
   return (
     <>
       <footer className="main-footer">
-        <Flex
-          justify="center"
-          className="d-flex flex-column align-center mx-auto"
-        >
+        <Flex justify="center">
           <Link
             className="d-flex icon-line  footer-link align-center animation-link"
             to="/"
@@ -45,12 +42,15 @@ export const Footer: React.VFC = () => {
         </Flex>
       </footer>
 
-      <footer className="copyright-footer">
-        <Flex>
-          <Spacer />
-          <span>&copy; sa2taka</span>
-        </Flex>
-      </footer>
+      <Flex
+        as="footer"
+        className="copyright-footer"
+        wrap="wrap"
+        alignItems="center"
+      >
+        <Spacer />
+        <span style={{ marginRight: '8px' }}>&copy; sa2taka</span>
+      </Flex>
     </>
   );
 };
