@@ -1,47 +1,43 @@
 import { Flex } from '@chakra-ui/react';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
+import { formatDate } from '../../util/formatTime';
 
 type Props = {
   category?: string;
   page?: number;
 };
 export const Posts: React.VFC<Props> = ({ category, page }) => {
-  const data = useStaticQuery<GatsbyTypes.BlogPostQuery>(graphql`
-    query BlogPost {
-      allContentfulBlogPost(
-        skip: 0
-        limit: 1000
-        sort: { order: DESC, fields: createdAt }
-      ) {
+  const data = useStaticQuery<GatsbyTypes.AllPostsQuery>(graphql`
+    query AllPosts {
+      allContentfulBlogPost {
         edges {
           node {
             id
-            public
             slug
-            tags
             title
-            updatedAt
-            description
             createdAt
-            category {
-              id
-              sort
-              slug
+            latex
+            author {
               name
             }
-            author {
-              id
-              name
-              icon {
-                title
-                file {
-                  url
-                  fileName
-                }
-                createdAt
-                contentful_id
+            postImage {
+              title
+              file {
+                fileName
+                url
               }
+            }
+            body {
+              body
+            }
+            description
+            updatedAt
+            tags
+            public
+            category {
+              name
+              slug
             }
           }
         }
@@ -59,21 +55,10 @@ export const Posts: React.VFC<Props> = ({ category, page }) => {
 };
 
 type PostProp = {
-  post: GatsbyTypes.BlogPostQuery['allContentfulBlogPost']['edges'][number]['node'];
+  post: GatsbyTypes.AllPostsQuery['allContentfulBlogPost']['edges'][number]['node'];
 };
 
 const Post: React.VFC<PostProp> = ({ post }) => {
-  const formatDate = (date: Date) => {
-    const fillBy0 = (num: number, length: number) => {
-      return ('0000' + num.toString()).slice(-length);
-    };
-    const year = date.getFullYear();
-    const month = fillBy0(date.getMonth() + 1, 2);
-    const day = fillBy0(date.getDate(), 2);
-    const week = ['日', '月', '火', '水', '木', '金', '土'][date.getDay()];
-    return `${year}/${month}/${day}(${week})`;
-  };
-
   return (
     <Flex as="li" direction="column">
       <div>{post.category?.name}</div>

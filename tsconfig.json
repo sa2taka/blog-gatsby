@@ -3,7 +3,7 @@
     "module": "esnext", /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
     "lib": [
       "dom",
-      "esnext"
+      "esnext",
     ],
     "jsx": "react",
     "strict": true, /* Enable all strict type-checking options. */
@@ -12,5 +12,6 @@
     "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
     "noEmit": true,
     "moduleResolution": "node",
+    "target": "esnext"
   }
 }

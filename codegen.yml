@@ -2,9 +2,12 @@ overwrite: true
 schema: 'http://localhost:8000/___graphql'
 documents:
   - 'node_modules/gatsby-source-contentful/!(node_modules)/**/*.js'
-  - 'src/**/*.{ts,tsx}'
+  - 'gatsby-node/**/*.{ts,tsx}'
 generates:
-  src/generated/graphql.tsx:
+  src/types/node-graphql.tsx:
     plugins:
       - 'typescript'
       - 'typescript-operations'
+config:
+  namingConvention:
+    enumValues: keep
