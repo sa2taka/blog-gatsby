@@ -3,18 +3,12 @@ import { Link } from 'gatsby';
 
 import { Layout } from '../components/layout/layout';
 import { Seo } from '../components/layout/seo';
+import { Posts } from '../components/posts';
 
 const IndexPage = () => (
   <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
+    <Seo title="ホーム" />
+    <Posts />
   </Layout>
 );
 

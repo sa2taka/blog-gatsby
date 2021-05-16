@@ -18,7 +18,7 @@ import { Footer } from './footer';
 type Prop = { children: React.ReactNode };
 
 export const Layout: React.VFC<Prop> = ({ children }) => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<GatsbyTypes.SiteTitleQueryQuery>(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -31,7 +31,7 @@ export const Layout: React.VFC<Prop> = ({ children }) => {
   return (
     <Theme>
       <div className="application">
-        <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+        <Header siteTitle={data.site?.siteMetadata?.title || ''} />
         <main className="main">{children}</main>
         <Footer />
       </div>
