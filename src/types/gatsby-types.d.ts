@@ -780,6 +780,7 @@ type ContentfulBlogPost = ContentfulReference & ContentfulEntry & Node & {
   readonly slug: Maybe<Scalars['String']>;
   readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly public: Maybe<Scalars['Boolean']>;
+  readonly latex: Maybe<Scalars['Boolean']>;
   readonly author: Maybe<ContentfulAuthor>;
   readonly category: Maybe<ContentfulCategory>;
   readonly postImage: Maybe<ContentfulAsset>;
@@ -788,7 +789,6 @@ type ContentfulBlogPost = ContentfulReference & ContentfulEntry & Node & {
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
   readonly sys: Maybe<ContentfulBlogPostSys>;
-  readonly latex: Maybe<Scalars['Boolean']>;
   readonly gatsbyPath: Maybe<Scalars['String']>;
   /** Returns all children nodes filtered by type contentfulBlogPostBodyTextNode */
   readonly childrenContentfulBlogPostBodyTextNode: Maybe<ReadonlyArray<Maybe<contentfulBlogPostBodyTextNode>>>;
@@ -1337,6 +1337,7 @@ type Query_contentfulBlogPostArgs = {
   slug: Maybe<StringQueryOperatorInput>;
   tags: Maybe<StringQueryOperatorInput>;
   public: Maybe<BooleanQueryOperatorInput>;
+  latex: Maybe<BooleanQueryOperatorInput>;
   author: Maybe<ContentfulAuthorFilterInput>;
   category: Maybe<ContentfulCategoryFilterInput>;
   postImage: Maybe<ContentfulAssetFilterInput>;
@@ -1345,7 +1346,6 @@ type Query_contentfulBlogPostArgs = {
   createdAt: Maybe<DateQueryOperatorInput>;
   updatedAt: Maybe<DateQueryOperatorInput>;
   sys: Maybe<ContentfulBlogPostSysFilterInput>;
-  latex: Maybe<BooleanQueryOperatorInput>;
   gatsbyPath: Maybe<StringQueryOperatorInput>;
   childrenContentfulBlogPostBodyTextNode: Maybe<contentfulBlogPostBodyTextNodeFilterListInput>;
   childContentfulBlogPostBodyTextNode: Maybe<contentfulBlogPostBodyTextNodeFilterInput>;
@@ -3564,6 +3564,7 @@ type ContentfulBlogPostFilterInput = {
   readonly slug: Maybe<StringQueryOperatorInput>;
   readonly tags: Maybe<StringQueryOperatorInput>;
   readonly public: Maybe<BooleanQueryOperatorInput>;
+  readonly latex: Maybe<BooleanQueryOperatorInput>;
   readonly author: Maybe<ContentfulAuthorFilterInput>;
   readonly category: Maybe<ContentfulCategoryFilterInput>;
   readonly postImage: Maybe<ContentfulAssetFilterInput>;
@@ -3572,7 +3573,6 @@ type ContentfulBlogPostFilterInput = {
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
   readonly sys: Maybe<ContentfulBlogPostSysFilterInput>;
-  readonly latex: Maybe<BooleanQueryOperatorInput>;
   readonly gatsbyPath: Maybe<StringQueryOperatorInput>;
   readonly childrenContentfulBlogPostBodyTextNode: Maybe<contentfulBlogPostBodyTextNodeFilterListInput>;
   readonly childContentfulBlogPostBodyTextNode: Maybe<contentfulBlogPostBodyTextNodeFilterInput>;
@@ -3717,6 +3717,7 @@ type ContentfulBlogPostFieldsEnum =
   | 'slug'
   | 'tags'
   | 'public'
+  | 'latex'
   | 'author.contentful_id'
   | 'author.id'
   | 'author.node_locale'
@@ -3781,6 +3782,7 @@ type ContentfulBlogPostFieldsEnum =
   | 'author.blog_post.slug'
   | 'author.blog_post.tags'
   | 'author.blog_post.public'
+  | 'author.blog_post.latex'
   | 'author.blog_post.author.contentful_id'
   | 'author.blog_post.author.id'
   | 'author.blog_post.author.node_locale'
@@ -3820,7 +3822,6 @@ type ContentfulBlogPostFieldsEnum =
   | 'author.blog_post.updatedAt'
   | 'author.blog_post.sys.type'
   | 'author.blog_post.sys.revision'
-  | 'author.blog_post.latex'
   | 'author.blog_post.gatsbyPath'
   | 'author.blog_post.childrenContentfulBlogPostBodyTextNode'
   | 'author.blog_post.childrenContentfulBlogPostBodyTextNode.id'
@@ -3899,6 +3900,7 @@ type ContentfulBlogPostFieldsEnum =
   | 'category.blog_post.slug'
   | 'category.blog_post.tags'
   | 'category.blog_post.public'
+  | 'category.blog_post.latex'
   | 'category.blog_post.author.contentful_id'
   | 'category.blog_post.author.id'
   | 'category.blog_post.author.node_locale'
@@ -3938,7 +3940,6 @@ type ContentfulBlogPostFieldsEnum =
   | 'category.blog_post.updatedAt'
   | 'category.blog_post.sys.type'
   | 'category.blog_post.sys.revision'
-  | 'category.blog_post.latex'
   | 'category.blog_post.gatsbyPath'
   | 'category.blog_post.childrenContentfulBlogPostBodyTextNode'
   | 'category.blog_post.childrenContentfulBlogPostBodyTextNode.id'
@@ -4125,7 +4126,6 @@ type ContentfulBlogPostFieldsEnum =
   | 'sys.contentType.sys.type'
   | 'sys.contentType.sys.linkType'
   | 'sys.contentType.sys.id'
-  | 'latex'
   | 'gatsbyPath'
   | 'childrenContentfulBlogPostBodyTextNode'
   | 'childrenContentfulBlogPostBodyTextNode.id'
@@ -4369,6 +4369,7 @@ type ContentfulCategoryFieldsEnum =
   | 'blog_post.slug'
   | 'blog_post.tags'
   | 'blog_post.public'
+  | 'blog_post.latex'
   | 'blog_post.author.contentful_id'
   | 'blog_post.author.id'
   | 'blog_post.author.node_locale'
@@ -4393,10 +4394,10 @@ type ContentfulCategoryFieldsEnum =
   | 'blog_post.author.blog_post.slug'
   | 'blog_post.author.blog_post.tags'
   | 'blog_post.author.blog_post.public'
+  | 'blog_post.author.blog_post.latex'
   | 'blog_post.author.blog_post.spaceId'
   | 'blog_post.author.blog_post.createdAt'
   | 'blog_post.author.blog_post.updatedAt'
-  | 'blog_post.author.blog_post.latex'
   | 'blog_post.author.blog_post.gatsbyPath'
   | 'blog_post.author.blog_post.childrenContentfulBlogPostBodyTextNode'
   | 'blog_post.author.blog_post.children'
@@ -4433,10 +4434,10 @@ type ContentfulCategoryFieldsEnum =
   | 'blog_post.category.blog_post.slug'
   | 'blog_post.category.blog_post.tags'
   | 'blog_post.category.blog_post.public'
+  | 'blog_post.category.blog_post.latex'
   | 'blog_post.category.blog_post.spaceId'
   | 'blog_post.category.blog_post.createdAt'
   | 'blog_post.category.blog_post.updatedAt'
-  | 'blog_post.category.blog_post.latex'
   | 'blog_post.category.blog_post.gatsbyPath'
   | 'blog_post.category.blog_post.childrenContentfulBlogPostBodyTextNode'
   | 'blog_post.category.blog_post.children'
@@ -4529,7 +4530,6 @@ type ContentfulCategoryFieldsEnum =
   | 'blog_post.updatedAt'
   | 'blog_post.sys.type'
   | 'blog_post.sys.revision'
-  | 'blog_post.latex'
   | 'blog_post.gatsbyPath'
   | 'blog_post.childrenContentfulBlogPostBodyTextNode'
   | 'blog_post.childrenContentfulBlogPostBodyTextNode.id'
@@ -4844,6 +4844,7 @@ type ContentfulAuthorFieldsEnum =
   | 'blog_post.slug'
   | 'blog_post.tags'
   | 'blog_post.public'
+  | 'blog_post.latex'
   | 'blog_post.author.contentful_id'
   | 'blog_post.author.id'
   | 'blog_post.author.node_locale'
@@ -4868,10 +4869,10 @@ type ContentfulAuthorFieldsEnum =
   | 'blog_post.author.blog_post.slug'
   | 'blog_post.author.blog_post.tags'
   | 'blog_post.author.blog_post.public'
+  | 'blog_post.author.blog_post.latex'
   | 'blog_post.author.blog_post.spaceId'
   | 'blog_post.author.blog_post.createdAt'
   | 'blog_post.author.blog_post.updatedAt'
-  | 'blog_post.author.blog_post.latex'
   | 'blog_post.author.blog_post.gatsbyPath'
   | 'blog_post.author.blog_post.childrenContentfulBlogPostBodyTextNode'
   | 'blog_post.author.blog_post.children'
@@ -4908,10 +4909,10 @@ type ContentfulAuthorFieldsEnum =
   | 'blog_post.category.blog_post.slug'
   | 'blog_post.category.blog_post.tags'
   | 'blog_post.category.blog_post.public'
+  | 'blog_post.category.blog_post.latex'
   | 'blog_post.category.blog_post.spaceId'
   | 'blog_post.category.blog_post.createdAt'
   | 'blog_post.category.blog_post.updatedAt'
-  | 'blog_post.category.blog_post.latex'
   | 'blog_post.category.blog_post.gatsbyPath'
   | 'blog_post.category.blog_post.childrenContentfulBlogPostBodyTextNode'
   | 'blog_post.category.blog_post.children'
@@ -5004,7 +5005,6 @@ type ContentfulAuthorFieldsEnum =
   | 'blog_post.updatedAt'
   | 'blog_post.sys.type'
   | 'blog_post.sys.revision'
-  | 'blog_post.latex'
   | 'blog_post.gatsbyPath'
   | 'blog_post.childrenContentfulBlogPostBodyTextNode'
   | 'blog_post.childrenContentfulBlogPostBodyTextNode.id'

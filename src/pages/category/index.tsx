@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Layout } from '../../components/layout/layout';
 import { Seo } from '../../components/layout/seo';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 
 interface Props {}
 
@@ -14,7 +14,9 @@ const Category: React.VFC<CategoryProps> = ({ category }) => {
   console.log(category);
   return (
     <li>
-      {category.name}({category.blog_post ? category.blog_post.length : 0})
+      <Link to={`/category/${category.slug}`}>
+        {category.name} ({category.blog_post.length})
+      </Link>
     </li>
   );
 };
