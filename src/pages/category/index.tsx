@@ -3,6 +3,9 @@ import React from 'react';
 import { Layout } from '../../components/layout/layout';
 import { Seo } from '../../components/layout/seo';
 import { useStaticQuery, graphql, Link } from 'gatsby';
+import { Center, Flex } from '@chakra-ui/react';
+
+import './index.css';
 
 interface Props {}
 
@@ -11,11 +14,10 @@ interface CategoryProps {
 }
 
 const Category: React.VFC<CategoryProps> = ({ category }) => {
-  console.log(category);
   return (
-    <li>
+    <li className="category-list-item">
       <Link to={`/category/${category.slug}`}>
-        {category.name} ({category.blog_post.length})
+        {`${category.name} (${category.blog_post.length})`}
       </Link>
     </li>
   );
@@ -39,18 +41,21 @@ const Categories: React.VFC<Props> = () => {
     }
   `);
 
-  console.log(data);
-
   return (
     <Layout>
       <Seo title="カテゴリ"></Seo>
-      <ul>
-        {data.allContentfulCategory.edges
-          .filter(data => data.node.blog_post)
-          .map(data => (
-            <Category category={data.node} key={data.node.id} />
-          ))}
-      </ul>
+      <Center as="h1" fontSize="1.6em">
+        カテゴリ
+      </Center>
+      <nav>
+        <Flex as="ul" wrap="wrap" justifyContent="start">
+          {data.allContentfulCategory.edges
+            .filter(data => data.node.blog_post)
+            .map(data => (
+              <Category category={data.node} key={data.node.id} />
+            ))}
+        </Flex>
+      </nav>
     </Layout>
   );
 };

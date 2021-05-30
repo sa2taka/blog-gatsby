@@ -1,0 +1,33 @@
+.category-list-item {
+  list-style: none;
+  margin: 12px 4px;
+}
+
+.category-list-item > a {
+  padding: 8px 20px;
+
+  border: thin solid;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.category-list-item > a:before {
+  content: '';
+
+  background-color: currentColor;
+  border-radius: inherit;
+  opacity: 0;
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.category-list-item > a:hover:before {
+  opacity: 0.1;
+}

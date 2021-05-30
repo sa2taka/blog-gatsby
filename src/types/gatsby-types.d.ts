@@ -5861,10 +5861,10 @@ type SiteTitleQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type SiteTitleQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
-type homesa2TakaprojectsblogGatsbysrccomponentslayoutseoTsx63159454QueryVariables = Exact<{ [key: string]: never; }>;
+type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type homesa2TakaprojectsblogGatsbysrccomponentslayoutseoTsx63159454Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+type Unnamed_1_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
 type AllPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
