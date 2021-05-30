@@ -33,8 +33,13 @@ export const Layout: React.VFC<Prop> = ({ children }) => {
     <Theme>
       <div className="application">
         <Header siteTitle={data.site?.siteMetadata?.title || ''} />
-        <Container maxWidth="816px" marginBottom="10">
-          <main className="main">{children}</main>
+        <Container
+          maxWidth="816px"
+          paddingBottom="10"
+          as="main"
+          className="main"
+        >
+          {children}
         </Container>
         <Footer />
       </div>
