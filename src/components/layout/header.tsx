@@ -2,9 +2,11 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
-import './header.css';
 import { Flex, Spacer } from '@chakra-ui/layout';
 import { DarkThemeSwitch } from './dartThemeSwtich';
+
+import './header.css';
+import './animationLink.css';
 
 type Prop = { siteTitle: string };
 
@@ -46,6 +48,31 @@ export const Header: React.VFC<Prop> = ({ siteTitle }) => (
       </Flex>
     </Link>
     <Spacer />
+    <nav
+      style={{
+        margin: 'auto 0.5em',
+      }}
+    >
+      <Link
+        to="/"
+        className="animation-link"
+        style={{
+          margin: 'auto 0.5em',
+        }}
+      >
+        Home
+      </Link>
+      <Link
+        to="/category"
+        className="animation-link"
+        style={{
+          margin: 'auto 0.5em',
+        }}
+      >
+        Category
+      </Link>
+    </nav>
+
     <DarkThemeSwitch />
   </Flex>
 );
