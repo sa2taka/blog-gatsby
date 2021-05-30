@@ -9,7 +9,14 @@ import { DarkThemeSwitch } from './dartThemeSwtich';
 type Prop = { siteTitle: string };
 
 export const Header: React.VFC<Prop> = ({ siteTitle }) => (
-  <Flex as="header" alignItems="center" height="100%" className="blog-header">
+  <Flex
+    as="header"
+    alignItems="center"
+    height="100%"
+    className="blog-header"
+    paddingTop="2"
+    paddingBottom="4"
+  >
     <Link
       to="/"
       style={{

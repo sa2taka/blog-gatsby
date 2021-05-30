@@ -62,7 +62,7 @@ type PostProp = {
 
 const Post: React.VFC<PostProp> = ({ post }) => {
   return (
-    <Flex as="li" direction="column">
+    <Flex as="li" direction="column" marginTop="4">
       <Link
         to={`/category/${post.category!.slug!}`}
         style={{
